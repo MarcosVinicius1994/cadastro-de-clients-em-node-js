@@ -1,6 +1,4 @@
 
-// const { loggerError } = require('../../shared/monitoring/logs/error-logs')
-// const { tracelogs} = require('../../shared/monitoring/logs/trace-logs')
 const clientService = require('../services/client-created-service')
 
 module.exports = {
@@ -40,10 +38,10 @@ module.exports = {
 
     async loadPutClientIdController(httpRequest) {
         try {
-            await clientService.loadPutClientIdService(httpRequest.body)
+            await clientService.loadPutClientIdService(httpRequest)
             return {
                 statusCode: 201,
-                body: 'client atualizado com sucesso'
+                body: { message: 'client atualizado com sucesso'}
             }
         } catch (error) {
             return {

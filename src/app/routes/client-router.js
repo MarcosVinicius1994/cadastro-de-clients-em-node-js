@@ -23,7 +23,7 @@ clientRouter.get('/id',
     }),
     expressCallback(clientController.loadGetClientIdController))
 
-clientRouter.put('/client/id',
+clientRouter.put('/id',
     celebrate({
         [Segments.QUERY]: {
             id: Joi.number()
@@ -33,6 +33,23 @@ clientRouter.put('/client/id',
                     'any.required': 'Define any required',
                     'number.empty': 'Define any number',
                     'number.pattern': 'Define any string inside pattern'
+                }),
+        },
+        [Segments.BODY]: {
+            name: Joi.string()
+                .optional()
+                .messages({
+                    'string.baseq3': 'Param name needs to be a string',
+                    'string.empty': 'Define any string',
+                    'string.pattern': 'Define any string inside pattern'
+                }),
+            address: Joi.string()
+                .required()
+                .messages({
+                    'string.baseq3': 'Param address needs to be a string',
+                    'any.required': 'Define any required',
+                    'string.empty': 'Define any string',
+                    'string.pattern': 'Define any string inside pattern'
                 }),
         },
     }),
