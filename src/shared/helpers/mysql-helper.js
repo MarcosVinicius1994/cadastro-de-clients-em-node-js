@@ -42,10 +42,8 @@ class MySqlHelper {
             conn.query(
                 execute,
                 function (err, rows) {
-                    if (rows === undefined) {
-                        reject(new Error(err.sqlMessage));
-                    } else if(err){
-                        resolve(err.sqlMessage)
+                    if (err) {
+                        reject(err.sqlMessage)
                     }else{
                         resolve(rows);
                     }
