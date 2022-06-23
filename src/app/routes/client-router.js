@@ -78,7 +78,7 @@ clientRouter.post('/',
     }),
     expressCallback(clientController.loadPostClientController))
 
-clientRouter.delete('/client/id',
+clientRouter.delete('/id',
     celebrate({
         [Segments.QUERY]: {
             id: Joi.number()
