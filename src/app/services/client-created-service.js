@@ -2,7 +2,7 @@ const mysqlHelper = require('../../shared/helpers/mysql-helper')
 const querysClients = require('../../shared/utils/get-client-util')
 
 module.exports = {
-    async loadGetClientService( ) {
+    async loadGetClientService() {
         try {
             console.log('Disparanando busca de dados no mongoDB', {
                 destination: 'mongodb',
@@ -57,27 +57,25 @@ module.exports = {
     async loadPutClientIdService(context) {
         try {
             let query = null
-            // query = await querySearchConfig(context)
-            console.log('Disparanando busca de dados no mongoDB', {
+            query = await querysClients.queryPutClientId(context)
+            console.log('Disparanando busca de dados no Mysql', {
                 query, context,
-                destination: 'mongodb',
+                destination: 'Mysql',
                 origin: 'DATA',
             })
-            // const startTime = new Date()
-            // const getCollection = await MongoHelper.getCollection('config')
-            // const data = //atualiza o mysql
-            // const endTime = new Date()
-            console.log('Retornando busca de dados no mongoDB', {
+            const startTime = new Date()
+            await mysqlHelper.simpleExecute(query)
+            const endTime = new Date()
+            console.log('Retornando busca de dados no Mysql', {
                 query, context,
-                destination: 'mongodb',
+                destination: 'Mysql',
                 origin: 'DATA',
                 responseTime: endTime - startTime
             })
-            // return data
         } catch (error) {
-            console.log(`Ocorreu um erro ao busca de dados no mongoDB ${error.message}`, {
+            console.log(`Ocorreu um erro ao busca de dados no Mysql ${error}`, {
                 query, context,
-                destination: 'mongodb',
+                destination: 'Mysql',
                 origin: 'DATA',
             })
             throw error
@@ -93,7 +91,7 @@ module.exports = {
                 origin: 'DATA',
             })
             const startTime = new Date()
-            const postClient = await mysqlHelper.simpleExecute(query)
+            await mysqlHelper.simpleExecute(query)
             const endTime = new Date()
             console.log('Retornando busca de dados no mongoDB', {
                 query, context,
@@ -101,10 +99,8 @@ module.exports = {
                 origin: 'DATA',
                 responseTime: endTime - startTime
             })
-            return postClient
         } catch (error) {
-            console.log(`Ocorreu um erro ao busca de dados no mongoDB ${error.message}`, {
-                query, context,
+            console.log(`Ocorreu um erro ao busca de dados no mongoDB ${error}`, {
                 destination: 'mongodb',
                 origin: 'DATA',
             })
@@ -114,7 +110,7 @@ module.exports = {
     async loadDeleteClientIdService(context) {
         try {
             let query = null
-            // query = await querySearchConfig(context)
+            query = await querySearchConfig(context)
             console.log('Disparanando busca de dados no mongoDB', {
                 query, context,
                 destination: 'mongodb',
