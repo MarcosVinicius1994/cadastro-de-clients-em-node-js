@@ -4,24 +4,24 @@ const querysClients = require('../../shared/utils/get-client-util')
 module.exports = {
     async loadGetClientService() {
         try {
-            console.log('Disparanando busca de dados no Mysql', {
+            console.log('Disparanando busca de Clients no Mysql', {
                 destination: 'Mysql',
-                origin: 'DATA',
+                origin: 'loadGetClientService',
             })
             const query = await querysClients.queryGetClient()
             const startTime = new Date()
             const getClients = await mysqlHelper.simpleExecute(query)
             const endTime = new Date().getTime
-            console.log('Retornando busca de dados no Mysql', {
+            console.log('Retornando busca de Clients no Mysql', {
                 destination: 'mysql',
-                origin: 'DATA',
+                origin: 'loadGetClientService',
                 responseTime: startTime - endTime
             })
             return getClients
         } catch (error) {
-            console.log(`Ocorreu um erro ao busca de dados no Mysql ${error.message}`, {
+            console.log(`Ocorreu um erro ao busca de Clients no Mysql ${error.message}`, {
                 destination: 'Mysql',
-                origin: 'DATA',
+                origin: 'loadGetClientService',
             })
             throw error
         }
@@ -30,26 +30,26 @@ module.exports = {
         try {
             let query = null
             query = await querysClients.queryClientId(context)
-            console.log('Disparanando busca de dados no Mysql', {
+            console.log('Disparanando busca de Clients por ID no Mysql', {
                 query, context,
                 destination: 'Mysql',
-                origin: 'DATA',
+                origin: 'loadGetClientIdService',
             })
             const startTime = new Date()
             const getClientId = await mysqlHelper.simpleExecute(query)
             const endTime = new Date()
-            console.log('Retornando busca de dados no Mysql', {
+            console.log('Retornando busca de Clients por ID no Mysql', {
                 query, context,
                 destination: 'mysql',
-                origin: 'DATA',
+                origin: 'loadGetClientIdService',
                 responseTime: endTime - startTime
             })
             return getClientId
         } catch (error) {
-            console.log(`Ocorreu um erro ao busca de dados no mysql: ${error.message}`, {
+            console.log(`Ocorreu um erro ao busca de Clients por ID no mysql: ${error.message}`, {
                 query, context,
                 destination: 'mysql',
-                origin: 'DATA',
+                origin: 'loadGetClientIdService',
             })
             throw error
         }
@@ -58,25 +58,25 @@ module.exports = {
         try {
             let query = null
             query = await querysClients.queryPutClientId(context)
-            console.log('Disparanando busca de dados no Mysql', {
+            console.log('Disparanando atualizacao de Clients por ID no Mysql', {
                 query, context,
                 destination: 'Mysql',
-                origin: 'DATA',
+                origin: 'loadPutClientIdService',
             })
             const startTime = new Date()
             await mysqlHelper.simpleExecute(query)
             const endTime = new Date()
-            console.log('Retornando busca de dados no Mysql', {
+            console.log('Retornando busca de atualizacao de Clients por ID no Mysql', {
                 query, context,
                 destination: 'Mysql',
-                origin: 'DATA',
+                origin: 'loadPutClientIdService',
                 responseTime: endTime - startTime
             })
         } catch (error) {
-            console.log(`Ocorreu um erro ao busca de dados no Mysql ${error}`, {
+            console.log(`Ocorreu um erro ao  atualizar Clients por IDs no Mysql ${error}`, {
                 query, context,
                 destination: 'Mysql',
-                origin: 'DATA',
+                origin: 'loadPutClientIdService',
             })
             throw error
         }
@@ -85,24 +85,24 @@ module.exports = {
         try {
             let query = null
             query = await querysClients.queryPostClient(context)
-            console.log('Disparanando busca de dados no Mysql', {
+            console.log('Disparanando criacao de Clientes no Mysql', {
                 query, context,
                 destination: 'Mysql',
-                origin: 'DATA',
+                origin: 'loadPostClientService',
             })
             const startTime = new Date()
             await mysqlHelper.simpleExecute(query)
             const endTime = new Date()
-            console.log('Retornando busca de dados no Mysql', {
+            console.log('Retornando criacao de Clientes no Mysql', {
                 query, context,
                 destination: 'Mysql',
-                origin: 'DATA',
+                origin: 'loadPostClientService',
                 responseTime: endTime - startTime
             })
         } catch (error) {
-            console.log(`Ocorreu um erro ao busca de dados no Mysql ${error}`, {
+            console.log(`Ocorreu um erro criar de Clientes no Mysql ${error}`, {
                 destination: 'Mysql',
-                origin: 'DATA',
+                origin: 'loadPostClientService',
             })
             throw error
         }
@@ -111,25 +111,25 @@ module.exports = {
         try {
             let query = null
             query = await querysClients.queryDeleteClientId(context)
-            console.log('Disparanando busca de dados no Mysql', {
+            console.log('Deletando Clientes por Id no Mysql', {
                 query, context,
                 destination: 'Mysql',
-                origin: 'DATA',
+                origin: 'loadDeleteClientIdService',
             })
             const startTime = new Date()
             await mysqlHelper.simpleExecute(query)
             const endTime = new Date()
-            console.log('Retornando busca de dados no Mysql', {
+            console.log('Retornando delete de Clientes por Id no Mysql', {
                 query, context,
                 destination: 'Mysql',
-                origin: 'DATA',
+                origin: 'loadDeleteClientIdService',
                 responseTime: endTime - startTime
             })
         } catch (error) {
-            console.log(`Ocorreu um erro ao busca de dados no Mysql ${error.message}`, {
+            console.log(`Ocorreu um erro ao deletar de Clientes por Id no Mysql ${error.message}`, {
                 query, context,
                 destination: 'Mysql',
-                origin: 'DATA',
+                origin: 'loadDeleteClientIdService',
             })
             throw error
         }

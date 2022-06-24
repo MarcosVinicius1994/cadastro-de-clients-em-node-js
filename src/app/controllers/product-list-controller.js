@@ -2,7 +2,7 @@
 const productService = require('../services/product-service')
 
 module.exports = {
-    async loadListProductsController() {
+    async loadListProductsController(httpContext) {
         try {
             const products = await productService.loadListProductService()
             lista = products
