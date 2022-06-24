@@ -1,4 +1,4 @@
-const shared  = require('../configs/shared-variables.json')
+const shared  = require('./shared-variables.json')
 module.exports = {
         host: shared.host,
         password: shared.password,

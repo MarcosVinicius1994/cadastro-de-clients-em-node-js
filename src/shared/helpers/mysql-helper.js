@@ -1,5 +1,5 @@
 const MySql = require('mysql')
-const config = require('../configs/mongo-config')
+const config = require('../configs/mysql-config')
 
 class MySqlHelper {
     constructor() {

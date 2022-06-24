@@ -1,8 +1,7 @@
 const { Router } = require('express')
 const { celebrate, Joi, Segments } = require('celebrate')
 const expressCallback = require('../utils/express-callback')
-const clientController = require('../controllers/client-created-controller')
-const { loadPutClientIdController } = require('../controllers/client-created-controller')
+const clientController = require('../controllers/client-controller')
 const clientRouter = Router()
 
 clientRouter.get('/',
@@ -53,7 +52,7 @@ clientRouter.put('/id',
                 }),
         },
     }),
-    expressCallback(loadPutClientIdController))
+    expressCallback(clientController.loadPutClientIdController))
 
 clientRouter.post('/',
     celebrate({

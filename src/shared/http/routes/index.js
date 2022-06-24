@@ -2,6 +2,7 @@ const { Router } = require('express')
 
 const pjson = require('../../../../package.json')
 const clientRouter = require('../../../app/routes/client-router')
+const productRouter = require('../../../app/routes/product-router')
 
 const routes = Router()
 
@@ -23,7 +24,8 @@ routes.get('/', (req, res) => {
     return res.json({ message: 'Olá serviço de crud para clients' })
 })
 
-routes.use('/v1/clients', clientRouter)
+routes.use('/v1/api/clients', clientRouter)
+routes.use('/v1/api/products/', productRouter)
 
 
 

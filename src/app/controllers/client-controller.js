@@ -1,5 +1,5 @@
 
-const clientService = require('../services/client-created-service')
+const clientService = require('../services/client-service')
 
 module.exports = {
     async loadGetClientController() {
