@@ -20,7 +20,6 @@ routes.get('/api/health', (req, res) => {
     })
 })
 
-
 routes.get('/', (req, res) => {
     return res.json({ message: 'Olá serviço de crud para clients' })
 })
@@ -28,8 +27,5 @@ routes.get('/', (req, res) => {
 routes.use('/v1/api/clients', clientRouter)
 routes.use('/v1/api/products/', productRouter)
 routes.use('/v1/api/products/favorites', productFavoritesRouter)
-
-
-
 
 module.exports = routes

@@ -69,7 +69,6 @@ module.exports = {
     },
     async loadDeleteClientIdController(httpRequest) {
         try {
-            // traceLogs(`Busca de cep solicitada`)
             await clientService.loadDeleteClientIdService(httpRequest.query)
             return {
                 statusCode: 201,

@@ -10,17 +10,13 @@ const routes = require('./routes')
 const jsonParser = require('../../shared/middlewares/json-parse')
 const contentType = require('../../shared/middlewares/content-type')
 const { httpContext, setContext } = require('../middlewares/http-context')
-
 const app = express()
-
 app.use(jsonParser)
 app.use(contentType)
 app.use(httpContext)
 app.use(setContext)
-
 app.use(routes)
 app.use(errors())
-
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Authorization, Content-Type, Accept");

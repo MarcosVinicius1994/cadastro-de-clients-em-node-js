@@ -1,13 +1,7 @@
 const dotenv = require('dotenv')
-
 dotenv.config({ path: process.env.NODE_ENV === 'dev' ? '.env.dev' : null })
-
 const app = require('./app')
-
 const mysqlHelper = require('../helpers/mysql-helper')
-// const { loggerError } = require('../monitoring/logs/error-logs')
-// const { traceLogs } = require('../monitoring/logs/trace-logs')
-
 const port = process.env.APP_DATA_CONFIG || 3000
 
 const mysql = mysqlHelper
